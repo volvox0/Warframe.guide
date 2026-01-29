@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Orbitron:wght@400;700&display=swap');
+
+:root {
+    --wf-cyan: #06b6d4;
+    --wf-gold: #eab308;
+    --wf-dark: #020617;
+    --wf-card: #0f172a;
+    --wf-border: #1e293b;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: #f1f5f9;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.font-orbitron { font-family: 'Orbitron', sans-serif; }
+
+#main-wrapper {
+    min-height: 100vh;
+    background-color: var(--wf-dark);
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.glass-panel {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(6, 182, 212, 0.15);
+}
+
+.active-tab {
+    color: var(--wf-cyan);
+    border-bottom: 2px solid var(--wf-cyan);
+    background: linear-gradient(to top, rgba(6, 182, 212, 0.1), transparent);
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 300px;
+}
+@media (min-width: 768px) { .chart-container { height: 400px; } }
+
+.item-tooltip {
+    position: absolute;
+    z-index: 50;
+    bottom: 105%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 260px;
+    padding: 1rem;
+    background: #0f172a;
+    border: 1px solid var(--wf-cyan);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+.item-card:hover .item-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tab-nav {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade { animation: fadeIn 0.4s ease-out forwards; }
